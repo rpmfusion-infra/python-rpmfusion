@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <config xmlns="http://zanata.org/namespace/config/">
     <url>https://fedora.zanata.org/</url>
-    <project>python-fedora</project>
+    <project>python-rpmfusion</project>
     <project-version>0.8.0</project-version>
     <project-type>gettext</project-type>
     <src-dir>translations</src-dir>

@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[python-fedora.python-fedorapot]
+[python-rpmfusion.python-rpmfusionpot]
 file_filter = translations/<lang>.po
-source_file = translations/python-fedora.pot
+source_file = translations/python-rpmfusion.pot
 source_lang = en

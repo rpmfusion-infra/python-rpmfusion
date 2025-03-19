@@ -15,7 +15,6 @@ setup(
     keywords='Fedora Python Webservices',
     url=URL,
     packages=find_packages(),
-    py_modules=['flask_fas', 'flask_fas_openid'],
     include_package_data=True,
     # non-setuptools package.  When everything we care about uses
     # python-2.5 distutils we can add these:
@@ -30,13 +29,6 @@ setup(
         'lockfile',
         'openidc-client',
     ],
-    extras_require={
-        'wsgi': ['repoze.who', 'Beaker', 'Paste'],
-        'flask': [
-            'Flask', 'Flask_WTF', 'python-openid', 'python-openid-teams',
-            'python-openid-cla',
-        ],
-    },
     message_extractors={
         'fedora': [
             ('**.py', 'python', None),
