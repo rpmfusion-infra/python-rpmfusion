@@ -1,5 +1,3 @@
-#%%global prerel c2
-
 %global desc Python modules that help with building Fedora Services.  The client module\
 included here can be used to build programs that communicate with many\
 Fedora Infrastructure Applications such as Bodhi, PackageDB, MirrorManager,\
@@ -7,7 +5,7 @@ and FAS2.\
 
 
 Name:           python-rpmfusion
-Version:        1.2
+Version:        1.2.1
 Release:        1%{?dist}
 BuildArch:      noarch
 
@@ -60,15 +58,9 @@ grep "PO-Revision-Date: \\\\n" translations/*.po  -l | xargs rm -f
 # https://bugzilla.redhat.com/show_bug.cgi?id=1329539
 rm -f translations/{anp,bal,ilo,mai,nds,wba}.po
 
-# Pull in the old compat version of cherrypy to build the tg1 docs.
-cp setup.py setup_docs.py
-sed -i 's/import sys/import sys\n__requires__ = ["CherryPy < 3.0"]; import pkg_resources/' setup_docs.py
-
 
 %build
 %{__python3} setup.py build
-## No docs, because that tries to hit the tg pathways (py2-only)
-#%{__python3} setup.py build_sphinx
 ## We can probably port releaseutils.py, but we haven't yet.
 %{__python3} releaseutils.py build_catalogs
 
@@ -79,8 +71,7 @@ sed -i 's/import sys/import sys\n__requires__ = ["CherryPy < 3.0"]; import pkg_r
 DESTDIR=%{buildroot} %{__python3} releaseutils.py install_catalogs
 
 # Remove regression tests
-rm -rf %{buildroot}%{python3_sitelib}/fedora/wsgi/test
-rm -rf %{buildroot}%{python3_sitelib}/tests/
+rm -r %{buildroot}%{python3_sitelib}/tests/
 
 %find_lang %{name}
 
@@ -90,6 +81,12 @@ rm -rf %{buildroot}%{python3_sitelib}/tests/
 %{python3_sitelib}/python_fedora*egg-info
 
 %changelog
+* Fri May 23 2025 Sérgio Basto <sergio@serjux.com> - 1.2.1-1
+- Update to 1.2.1
+
+* Wed Mar 19 2025 Leigh Scott <leigh123linux@gmail.com> - 1.2-2
+- rebuilt
+
 * Wed Mar 19 2025 Sérgio Basto <sergio@serjux.com> - 1.2-1
 - rpmfusion version
 
