@@ -1,11 +1,8 @@
-include setup.py
+include pyproject.toml
 include releaseutils.py
 include *.spec
 include COPYING AUTHORS NEWS README.rst
 recursive-include doc *
-include fedora/tg/templates/genshi/*.html
-include fedora/tg2/templates/mako/*.mak
-include fedora/tg2/templates/genshi/*.html
 include translations/*.pot
 include translations/*.po
 include .tx/config

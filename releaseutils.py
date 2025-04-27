@@ -15,7 +15,7 @@ from contextlib import contextmanager
 from distutils.sysconfig import get_python_lib
 
 from kitchen.pycompat27 import subprocess
-import pkg_resources
+from importlib.metadata import distribution
 
 import fedora.release
 from six.moves import configparser, map
@@ -136,9 +136,7 @@ def install_catalogs():
             print ('Set the MODULENAME environment variable and try again')
             sys.exit(2)
 
-        # Get teh egg name from pkg_resources
-        dist = pkg_resources.Distribution(project_name=ENVVARS['PACKAGENAME'],
-                                          version=fedora.release.VERSION)
+        dist = distribution(ENVVARS['PACKAGENAME'])
 
         # Set the localedir to be inside the egg directory
         localedir = os.path.join(localedir, '{}.egg'.format(dist.egg_name()),
