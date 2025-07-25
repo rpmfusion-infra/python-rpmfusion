@@ -23,12 +23,6 @@ Python Fedora
 
 Modules to communicate with and help implement Fedora Services.
 '''
-import kitchen
-# Setup gettext for all of kitchen.
-# Remember -- _() is for marking most messages
-# b_() is for marking messages that are used in exceptions
-(_, N_) = kitchen.i18n.easy_gettext_setup('python-rpmfusion')
-(b_, bN_) = kitchen.i18n.easy_gettext_setup('python-rpmfusion', use_unicode=False)
 
 from fedora import release
 __version__ = release.VERSION

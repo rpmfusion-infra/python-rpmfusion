@@ -1,7 +1,6 @@
 *.pyc
 *.egg*
 build
-locale
 .tox
 dist
 *rst~

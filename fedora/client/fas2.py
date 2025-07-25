@@ -29,7 +29,6 @@ import itertools
 import warnings
 
 from munch import Munch
-from kitchen.text.converters import to_bytes
 from six.moves.urllib.parse import quote, urlencode
 
 try:
@@ -382,7 +381,7 @@ class AccountSystem(BaseClient):
         else:
             raise AppError(
                 message='FAS server unable to retrieve group'
-                ' %(group)s' % {'group': to_bytes(groupname)},
+                ' %(group)s' % {'group': str(groupname)},
                 name='FASError')
 
     def group_members(self, groupname):
@@ -677,7 +676,7 @@ class AccountSystem(BaseClient):
             for field in fields:
                 if field not in USERFIELDS:
                     raise KeyError('%(field)s is not a valid field to'
-                                   ' filter' % {'field': to_bytes(field)})
+                                   ' filter' % {'field': str(field)})
         else:
             fields = USERFIELDS
 

@@ -29,7 +29,6 @@ from os import path
 import logging
 import warnings
 
-from kitchen.text.converters import to_bytes
 from six.moves import cPickle as pickle
 from six.moves import http_cookies as Cookie
 
@@ -135,7 +134,7 @@ class BaseClient(ProxyClient):
                 os.mkdir(b_SESSION_DIR, 0o755)
             except OSError as e:
                 self.log.warning('Unable to create %(dir)s: %(error)s' %
-                                 {'dir': b_SESSION_DIR, 'error': to_bytes(e)})
+                                 {'dir': b_SESSION_DIR, 'error': str(e)})
 
         try:
             with open(b_SESSION_FILE, 'wb') as session_file:
@@ -149,7 +148,7 @@ class BaseClient(ProxyClient):
                 'Unable to write to session file %(session)s:'
                 ' %(error)s' % {
                     'session': b_SESSION_FILE, 'error':
-                    to_bytes(e)
+                    str(e)
                 }
             )
 
@@ -173,7 +172,7 @@ class BaseClient(ProxyClient):
 
         if not self._session_id:
             self.log.debug(
-                'No session cached for "%s"' % to_bytes(self.username))
+                'No session cached for "%s"' % str(self.username))
 
         return self._session_id
 
@@ -320,7 +319,7 @@ class BaseClient(ProxyClient):
                 if arg != 'input':
                     raise TypeError(
                         'send_request() got an unexpected keyword'
-                        ' argument "%(arg)s"' % {'arg': to_bytes(arg)})
+                        ' argument "%(arg)s"' % {'arg': str(arg)})
             if req_params:
                 # We don't want to allow input if req_params was already given
                 raise TypeError('send_request() got an unexpected keyword'

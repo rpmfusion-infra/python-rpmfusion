@@ -32,7 +32,6 @@ import time
 import warnings
 
 from munch import munchify
-from kitchen.text.converters import to_bytes
 import requests
 from six.moves import http_client as httplib
 from six.moves import http_cookies as Cookie
@@ -337,7 +336,7 @@ class ProxyClient(object):
         complete_params = req_params or {}
         if session_id:
             # Add the csrf protection token
-            token = sha1(to_bytes(session_id))
+            token = sha1(str(session_id))
             complete_params.update({'_csrf_token': token.hexdigest()})
 
         auth = None
@@ -350,16 +349,16 @@ class ProxyClient(object):
                 # Adding this to the request data prevents it from being
                 # logged by apache.
                 complete_params.update({
-                    'user_name': to_bytes(username),
-                    'password': to_bytes(password),
+                    'user_name': str(username),
+                    'password': str(password),
                     'login': 'Login',
                 })
 
         # If debug, give people our debug info
         self.log.debug('Creating request %(url)s' %
-                       {'url': to_bytes(url)})
+                       {'url': str(url)})
         self.log.debug('Headers: %(header)s' %
-                       {'header': to_bytes(headers, nonstring='simplerepr')})
+                       {'header': str(headers, nonstring='simplerepr')})
         if self.debug and complete_params:
             debug_data = copy.deepcopy(complete_params)
 
@@ -489,7 +488,7 @@ class ProxyClient(object):
             raise ServerError(
                 url, http_status, 'Error returned from'
                 ' json module while processing %(url)s: %(err)s' %
-                {'url': to_bytes(url), 'err': to_bytes(e)})
+                {'url': str(url), 'err': str(e)})
 
         if 'exc' in data:
             name = data.pop('exc')

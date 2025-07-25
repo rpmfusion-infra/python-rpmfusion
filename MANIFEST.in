@@ -6,4 +6,3 @@ recursive-include doc *
 include translations/*.pot
 include translations/*.po
 include .tx/config
-include locale/*/*/*.mo

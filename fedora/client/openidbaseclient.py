@@ -44,7 +44,6 @@ from six.moves.urllib.parse import urljoin
 
 from functools import wraps
 from munch import munchify
-from kitchen.text.converters import to_bytes
 
 from fedora import __version__
 from fedora.client import (AuthError,
@@ -269,9 +268,9 @@ class OpenIdBaseClient(OpenIdProxyClient):
                 method, output.status_code, 'Error returned from'
                 ' json module while processing %(url)s: %(err)s\n%(output)s' %
                 {
-                    'url': to_bytes(method),
-                    'err': to_bytes(e),
-                    'output': to_bytes(output.text),
+                    'url': str(method),
+                    'err': str(e),
+                    'output': str(output.text),
                 })
 
         data = munchify(data)

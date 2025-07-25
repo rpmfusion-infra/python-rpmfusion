@@ -14,7 +14,6 @@ license = { text = "LGPLv2+" }
 keywords = ["RPMFusion", "Python", "Webservices"]
 dependencies = [
   "munch",
-  "kitchen",
   "requests",
   "urllib3",
   "six >=1.4.0",

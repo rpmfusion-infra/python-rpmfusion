@@ -51,7 +51,6 @@ except ImportError:
 import requests
 
 #from munch import munchify
-from kitchen.text.converters import to_bytes
 # For handling an exception that's coming from requests:
 import urllib3
 
@@ -452,8 +451,8 @@ class OpenIdProxyClient(object):
             cookies = session.cookies
 
         # If debug, give people our debug info
-        log.debug('Creating request %s', to_bytes(url))
-        log.debug('Headers: %s', to_bytes(headers, nonstring='simplerepr'))
+        log.debug('Creating request %s', str(url))
+        log.debug('Headers: %s', str(headers, nonstring='simplerepr'))
         if self.debug and complete_params:
             debug_data = copy.deepcopy(complete_params)
 
