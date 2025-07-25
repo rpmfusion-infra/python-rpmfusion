@@ -3,6 +3,3 @@ include releaseutils.py
 include *.spec
 include COPYING AUTHORS NEWS README.rst
 recursive-include doc *
-include translations/*.pot
-include translations/*.po
-include .tx/config
