@@ -336,7 +336,7 @@ class ProxyClient(object):
         complete_params = req_params or {}
         if session_id:
             # Add the csrf protection token
-            token = sha1(str(session_id))
+            token = sha1(str(session_id).encode('utf-8'))
             complete_params.update({'_csrf_token': token.hexdigest()})
 
         auth = None
@@ -358,7 +358,7 @@ class ProxyClient(object):
         self.log.debug('Creating request %(url)s' %
                        {'url': str(url)})
         self.log.debug('Headers: %(header)s' %
-                       {'header': str(headers, nonstring='simplerepr')})
+                       {'header': str(headers)})
         if self.debug and complete_params:
             debug_data = copy.deepcopy(complete_params)
 
