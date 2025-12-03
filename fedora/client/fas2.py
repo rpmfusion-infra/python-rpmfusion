@@ -389,12 +389,11 @@ class AccountSystem(BaseClient):
 
         This method returns a list of people who are in the requested group.
         The people are all approved in the group.  Unapproved people are not
-        shown.  The format of data is::
-
-            \[{'username': 'person1', 'role_type': 'user'},
-            \{'username': 'person2', 'role_type': 'sponsor'}]
-
-        role_type can be one of 'user', 'sponsor', or 'administrator'.
+        shown.
+        :rtype: :obj:`list`
+        :returns: A list of :obj:`munch.Munch` objects, each with members
+            'username' and 'role_type'.
+            'role_type' can be one of 'user', 'sponsor', or 'administrator'.
 
         .. versionadded:: 0.3.2
         .. versionchanged:: 0.3.21
