@@ -5,14 +5,14 @@ and FAS2.\
 
 
 Name:           python-rpmfusion
-Version:        1.2.1
-Release:        1%{?dist}
+Version:        1.2.2
+Release:        2%{?dist}
 BuildArch:      noarch
 
 License:        LGPLv2+
 Summary:        Python modules for talking to Fedora Infrastructure Services
 URL:            https://github.com/rpmfusion-infra/python-rpmfusion
-Source0:        https://github.com/rpmfusion-infra/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  gettext
 
@@ -38,33 +38,28 @@ Obsoletes:      python3-fedora < %{version}-%{release}
 %generate_buildrequires
 
 %pyproject_buildrequires -p
-# https://bugzilla.redhat.com/show_bug.cgi?id=1329549
-grep "PO-Revision-Date: \\\\n" translations/*.po  -l | xargs rm -f
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1329539
-rm -f translations/{anp,bal,ilo,mai,nds,wba}.po
 
 
 %build
 %pyproject_wheel
-## We can probably port releaseutils.py, but we haven't yet.
-%{__python3} releaseutils.py build_catalogs
 
 
 %install
 %pyproject_install
-## We can probably port releaseutils.py, but we haven't yet.
-DESTDIR=%{buildroot} %{__python3} releaseutils.py install_catalogs
 
 
-%find_lang %{name}
-
-%files -f %{name}.lang -n python3-rpmfusion
+%files -n python3-rpmfusion
 %license COPYING
 %{python3_sitelib}/fedora/
 %{python3_sitelib}/python_rpmfusion*dist-info
 
 %changelog
+* Fri Jul 25 2025 Sérgio Basto <sergio@serjux.com> - 1.2.2-2
+- Remove more unused translations
+
+* Fri Jul 25 2025 Sérgio Basto <sergio@serjux.com> - 1.2.2-1
+- Update python-rpmfusion to 1.2.2
+
 * Fri May 23 2025 Sérgio Basto <sergio@serjux.com> - 1.2.1-1
 - Update to 1.2.1
 
