@@ -391,8 +391,8 @@ class AccountSystem(BaseClient):
         The people are all approved in the group.  Unapproved people are not
         shown.  The format of data is::
 
-            [{'username': 'person1', 'role_type': 'user'},
-            {'username': 'person2', 'role_type': 'sponsor'}]
+            \[{'username': 'person1', 'role_type': 'user'},
+            \{'username': 'person2', 'role_type': 'sponsor'}]
 
         role_type can be one of 'user', 'sponsor', or 'administrator'.
 
