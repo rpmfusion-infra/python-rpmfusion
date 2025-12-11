@@ -1,12 +1,12 @@
 ====================
-Python Fedora Module
+Python RPM Fusion Module
 ====================
 
 :Author: Patrick Uiterwijk
 :Date: 21 April 2016
 :Version: 0.8.x
 
-The Fedora module provides a python API for building `Fedora Services`_ and
+The RPM Fusion module provides a python API for building `Fedora Services`_ and
 clients that connect to them.  It has functions and classes that help to build
 TurboGears_ applications and classes to make building clients of those
 services much easier.
@@ -27,7 +27,7 @@ Public License Version 2 or later.
 Dependencies
 ------------
 
-``python-fedora`` requires the ``munch``, ``kitchen``, and ``requests`` python
+``python-rpmfusion`` requires the ``munch``, ``kitchen``, and ``requests`` python
 modules.  It used to use ``pycurl``, but was updated to use ``requests`` as of
 version ``0.3.32``.
 The ``flask_fas_openid`` module requires the ``python-openid`` and
@@ -37,18 +37,18 @@ The ``flask_fas_openid`` module requires the ``python-openid`` and
 Installing
 ----------
 
-``python-fedora`` is found in rpm form in Fedora proper.  Sometimes a new
+``python-rpmfusion`` is found in rpm form in Fedora proper.  Sometimes a new
 version will be placed in the Fedora Infrastructure ``yum`` repository for testing
 within Infrastructure before being released to the general public.  Installing
 from the yum repository should be as easy as::
 
-	$ yum install python-fedora
+	$ dnf install python-rpmfusion
 
 If you want to install from a checkout of the development branch, follow these
 procedures::
 
-    $ git clone https://github.com/fedora-infra/python-fedora.git
-    $ cd python-fedora
+    $ git clone https://github.com/rpmfusion-infra/python-rpmfusion.git
+    $ cd python-rpmfusion
     $ ./setup.py install
 
 See the configuration notes in each section for information on configuring
