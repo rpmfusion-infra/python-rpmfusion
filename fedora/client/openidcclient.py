@@ -32,8 +32,8 @@ from fedora import __version__
 
 from openidc_client import OpenIDCClient
 
-PROD_IDP = 'https://id.fedoraproject.org/openidc/'
-STG_IDP = 'https://id.stg.fedoraproject.org/openidc/'
+PROD_IDP = 'https://id.rpmfusion.org/openidc/'
+STG_IDP = 'https://id.stg.rpmfusion.org/openidc/'
 DEV_IDP = 'https://iddev.fedorainfracloud.org/openidc/'
 
 
